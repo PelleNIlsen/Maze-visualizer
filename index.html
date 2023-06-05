@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maze Solver</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            text-align: center;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        input, select, button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Maze Solver</h1>
+        <!-- <form> -->
+            <label for="maze-size">Enter Maze Size:</label>
+            <input type="number" id="maze-size" min="1" placeholder="Maze Size (X = Y)" required>
+            <!-- <label for="algorithm">Select Algorithm:</label>
+            <select id="algorithm" required>
+                <option value="">--Select an algorithm--</option>
+                <option value="dfs">Depth-First Search</option>
+                <option value="bfs">Breadth-First Search</option>
+                Add other algorithms here
+            </select>
+            <button id="solve">Solve</button>
+        </form> -->
+        <button onclick="generateAndSolveMaze(document.getElementById('maze-size').value)">Generate and Solve Maze</button>
+        <div class="maze-container">
+            <canvas id="maze-canvas" width="800" height="800"></canvas>
+        </div>
+    </div>
+
+    <script src="sketch.js"></script>
+    <script src="public/maze.js"></script>
+    <script>
+        document.getElementById('solve').addEventListener('click', () => {
+            const size = document.getElementById('maze-size').value;
+            const algorithm = document.getElementById('algorithm').value;
+
+            window.location = `/solve?size=${size}&algorithm=${algorithm}`;
+        });
+    </script>
+</body>
+</html>
